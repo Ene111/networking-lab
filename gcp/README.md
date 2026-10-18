@@ -155,11 +155,8 @@ Hosts-file-only workarounds do not count.
 | Each VM | `dig +short @169.254.169.254 web.internal.test A` | Only the web VM's private IP. |
 | Each VM | `getent ahostsv4 web.internal.test` | The same private IP; repeated rows are normal. |
 
-On each of the four VMs (bastion, web, API, and database), run both commands
-for all three hostnames: `web.internal.test`, `api.internal.test`, and
-`db.internal.test`. Each hostname must return its corresponding service's
-private IP, regardless of which VM runs the lookup. Checking only each VM's
-own hostname is not sufficient.
+On all four VMs, run both commands for each hostname (`web.internal.test`,
+`api.internal.test`, and `db.internal.test`), expecting the corresponding service's private IP.
 
 ---
 
