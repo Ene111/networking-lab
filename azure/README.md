@@ -154,7 +154,11 @@ through cloud and system DNS on all four VMs.
 | Each VM | `dig +short @168.63.129.16 web.internal.test A` | The web VM's private IP, with no incorrect addresses. |
 | Each VM | `getent ahostsv4 web.internal.test` | The same private IP; repeated rows are normal. |
 
-Repeat for `api.internal.test` and `db.internal.test`, expecting their respective private IPs.
+On each of the four VMs (bastion, web, API, and database), run both commands
+for all three hostnames: `web.internal.test`, `api.internal.test`, and
+`db.internal.test`. Each hostname must return its corresponding service's
+private IP, regardless of which VM runs the lookup. Checking only each VM's
+own hostname is not sufficient.
 
 ---
 
